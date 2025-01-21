@@ -7,6 +7,7 @@ on:
 permissions:
   pages: write
   id-token: write
+  contents: read
 
 jobs:
   build-and-deploy:
@@ -27,21 +28,13 @@ jobs:
     - name: Build project
       run: npm run build
 
-    # Debug to ensure the dist directory exists
-    - name: Debug Build Output
-      run: |
-        echo "Contents of the dist directory:"
-        ls -la ./dist
-
-    # Upload the build artifact
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
-        path: ./dist # Ensure this matches your build output directory
-        name: github-pages
+        path: ./dist
 
-    # Deploy the artifact to GitHub Pages
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        artifact_name: github-pages
