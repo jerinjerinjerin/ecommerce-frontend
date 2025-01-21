@@ -27,15 +27,20 @@ jobs:
     - name: Build project
       run: npm run build
 
+    # Debug to ensure the dist directory exists
     - name: Debug Build Output
-      run: ls -la ./dist
+      run: |
+        echo "Contents of the dist directory:"
+        ls -la ./dist
 
+    # Upload the build artifact
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
-        path: ./dist
+        path: ./dist # Ensure this matches your build output directory
         name: github-pages
 
+    # Deploy the artifact to GitHub Pages
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
       with:
