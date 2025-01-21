@@ -7,6 +7,7 @@ on:
 permissions:
   pages: write
   id-token: write
+  contents: read
 
 jobs:
   build-and-deploy:
@@ -27,13 +28,10 @@ jobs:
     - name: Build project
       run: npm run build
 
-    - name: List files after build
-      run: ls -la build
-
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v2
       with:
-        path: ./build
+        path: ./dist
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4

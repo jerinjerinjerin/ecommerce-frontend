@@ -1,4 +1,4 @@
-
+// otp page
 const Otp = () => {
   return (
     <div>Otp</div>
