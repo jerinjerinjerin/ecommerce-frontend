@@ -7,15 +7,17 @@ type RegisterInput = {
   username: string;
   email: string;
   password: string;
-  confirmPassword?: string;
+  confirmPassword: string;
   // age: number;
   // dob: Date;
   // gender: Gender;
 };
 
-type  = {
+type LoginUserInput= {
   email: string;
   password: string;
 }
 
-export { RegisterInput , LoginUserInput, Gender };
+RegisterPayload = Omit<RegisterInput, "confirmPassword">;
+
+export { RegisterInput , LoginUserInput, Gender, RegisterPayload };

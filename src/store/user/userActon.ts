@@ -10,12 +10,12 @@ import {
     REGISTER_USER_MUTATION, 
     LOGIN_USER_MUTATION 
 } from "../../graphql/user/mutation/userMutation"
-import { RegisterInput, LoginUserInput } from "../../data/type";
+import { RegisterPayload, LoginUserInput } from "../../data/type";
 import { ApolloError } from "@apollo/client";
 import { AppDispatch } from "../store";
 import { client } from "../../graphql/apolloClient";
 
-const createUserAction =  (data:RegisterInput) => async (dispatch: AppDispatch) => {
+const createUserAction =  (data:RegisterPayload) => async (dispatch: AppDispatch) => {
     dispatch(createUserStart())   
     try {
         const response = await client.mutate({

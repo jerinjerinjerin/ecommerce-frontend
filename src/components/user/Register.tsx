@@ -22,12 +22,12 @@ const Register = () => {
 
   
 
-  const onSubmit: SubmitHandler<RegisterInput> = (data) => {
-    console.log(data);
-
-    const { confirmPassword, ...dataToSend } = data;
-    dispatch(createUserAction(dataToSend))
+  const onSubmit: SubmitHandler<RegisterInput> = ({ confirmPassword, ...dataToSend }) => {
+    console.log(dataToSend);
+  
+    dispatch(createUserAction(dataToSend));
   };
+  
 
   return (
     <form
